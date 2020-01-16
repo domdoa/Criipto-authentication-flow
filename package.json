@@ -1,0 +1,21 @@
+{
+  "name": "criipto",
+  "version": "1.0.0",
+  "description": "Demo implementation of Criipto authentication flow",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "nodemon index.js"
+  },
+  "author": "Dominykas Rumsa",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "passport": "^0.4.1",
+    "passport-openidconnect": "0.0.2"
+  }
+}
