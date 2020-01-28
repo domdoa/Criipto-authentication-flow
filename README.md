@@ -40,28 +40,28 @@ Once you complete this guide you should be able to:
  3. Choose between different authentication methods
 
 ### Register Your Application in Criipto Verify
-Assuming that you already have an account created with Criipto Verify you have to register an application on the platform to use any of the available e-IDs for authentication.\
-First create a new tenant by clicking on menu in top-right corner of the screen. Choose any preferred  name which is available. *Do not worry setting up tenant could take a while*\
+Assuming that you already have an account created with Criipto Verify you have to register an application on the platform to use any of the available e-IDs for authentication.  
+First create a new tenant by clicking on menu in top-right corner of the screen. Choose any preferred  name which is available. *Do not worry setting up tenant could take a while*  
 
-![](images/newtenant.jpg)
-\Navigate to **Application** tab and create new application manually\
+![](images/newtenant.jpg)  
+Navigate to **Application** tab and create new application manually  
 
-![](images/newapplication.jpg)
+![](images/newapplication.jpg)  
 
-\Fill in blank fields. Specify **Domain** on which you will be communicating with Criipto Verify. **Client ID** will be used to identify your application, this value has to be unique. **Callback URLs** a link or a list of links where after successful authentication JSON Web token will be returned. Put each URL on a new line.\
+Fill in blank fields. Specify **Domain** on which you will be communicating with Criipto Verify. **Client ID** will be used to identify your application, this value has to be unique. **Callback URLs** a link or a list of links where after successful authentication JSON Web token will be returned. Put each URL on a new line.  
 
-![](images/createnewapplication.jpg)
-\Choose desired authentication providers and click **Save**
+![](images/createnewapplication.jpg)  
+Choose desired authentication providers and click **Save**
 
 ### Configure the OAuth2 code flow
 Once you have saved the configuration for you application open it again and you should see **OpenID Connect** options.
-Select **Enable OAuth2 Code Flow**. Then you will be presented with client secret, note it down because it is shown only once, also you can always generate new client secret by clicking **Re-generate client secret**.\
+Select **Enable OAuth2 Code Flow**. Then you will be presented with client secret, note it down because it is shown only once, also you can always generate new client secret by clicking **Re-generate client secret**.  
 
-For **User info response strategy** we will be using **plainJson**\
+For **User info response strategy** we will be using **plainJson**  
 
-![](images/openid.jpg)
+![](images/openid.jpg)  
 
-\After everything is set up click **Save**
+After everything is set up click **Save**
 
 ### Node.js application
 To create a Node.js application run `npm init` command.
@@ -125,7 +125,7 @@ module.exports = app
 ```
 
 ### Passport setup
-For passport setup we create new `config` folder and in that folder file named `passport-setup.js`\
+For passport setup we create new `config` folder and in that folder file named `passport-setup.js`  
 Import required libraries:
 ```javascript
 const passport = require('passport')
@@ -134,27 +134,26 @@ const keys = require('./keys')
 ```
 Then we set up passport `openidconnect` strategy. This is the part where `ClientID` `Domain` and `Client Secret` is used, all these values could be found under you application configuration in Criipto Verify platform.
 `arc_values` defines what method of authentication we will be using. In this case it is Danish NemID. These are the possible values:
-- Norwegian BankID\	 
- Mobile or Web (user choice): 	urn:grn:authn:no:bankid
+- Norwegian BankID  
+ Mobile or Web (user choice): urn:grn:authn:no:bankid
 ---
-- Norwegian Vipps Login\	 
-  Login with Vipps app: 	urn:grn:authn:no:vipps
+- Norwegian Vipps Login  
+  Login with Vipps app: urn:grn:authn:no:vipps
 ---
-- Swedish BankID\	 
-  Same device:	urn:grn:authn:se:bankid:same-device\
-  Another device (aka mobile): 	urn:grn:authn:se:bankid:another-device\
+- Swedish BankID  
+  Same device: urn:grn:authn:se:bankid:same-device  
+  Another device (aka mobile): urn:grn:authn:se:bankid:another-device  
 ---
-- Danish NemID\
-  Personal with code card: 	urn:grn:authn:dk:nemid:poces\
-  Employee with code card: 	urn:grn:authn:dk:nemid:moces\
-  Employee with code file: 	urn:grn:authn:dk:nemid:moces:codefile\
+- Danish NemID  
+  Personal with code card: urn:grn:authn:dk:nemid:poces  
+  Employee with code card: urn:grn:authn:dk:nemid:moces  
+  Employee with code file: urn:grn:authn:dk:nemid:moces:codefile  
 ---
-- Finish e-ID\ 
-  BankID:	urn:grn:authn:fi:bankid\
-  Mobile certificate (Mobiilivarmenne): 	urn:grn:authn:fi:mobile-id\
-  Any of the two:	urn:grn:authn:fi:all\
----
-\
+- Finish e-ID  
+  BankID: urn:grn:authn:fi:bankid  
+  Mobile certificate (Mobiilivarmenne): urn:grn:authn:fi:mobile-id  
+  Any of the two: urn:grn:authn:fi:all  
+---  
 ```javascript
 passport.use('oidc', new OidcStrategy({
   issuer: `https://${keys.criipto.domain}`,
@@ -173,7 +172,7 @@ passport.use('oidc', new OidcStrategy({
   return done(null, profile);
 }))
 ```
-Upon sucessful authentication user profile will be sent to redirect URL with all relevant information. This information will be stored under `request.user`.\ 
+Upon sucessful authentication user profile will be sent to redirect URL with all relevant information. This information will be stored under `request.user`.   
 Lastly, passport serialization functionality allows to store and delete user from the session with these lines of code:
 ```javascript
 passport.serializeUser((user, done)=> {
@@ -201,7 +200,7 @@ module.exports = {
 ```
 
 ### Routes
-Finally, we add `routes` folder in projects root directory and create `auth-routes.js` file. This file will handle all requests made to `http://localhost:5000/auth` route.\
+Finally, we add `routes` folder in projects root directory and create `auth-routes.js` file. This file will handle all requests made to `http://localhost:5000/auth` route.  
 Import necessary libraries:
 ```javascript
 const router = require('express').Router()
