@@ -5,14 +5,14 @@ This project will guide you in setting up Criipto authentication flow using Node
 ## Table of Contents
 - [Run project locally](#run-project-locally)
 - [Implementation](#implementation)
-- [1. Register Your Application in Criipto Verify](#1.-register-your-application-in-criipto-verify)
-- [2. Configure the OAuth2 code flow](#2.-configure-the-oauth2-code-flow)
-- [3. Node.js application](#3.-node.js-application)
-- [4. Server](#4.-server)
-- [5. Application](#5.-application)
-- [6. Passport setup](#6.-passport-setup)
-- [7. Keys](#7.-keys)
-- [8. Routes](#8.-routes)
+- [Register Your Application in Criipto Verify](#register-your-application-in-criipto-verify)
+- [Configure the OAuth2 code flow](#configure-the-oauth2-code-flow)
+- [Node.js application](#node.js-application)
+- [Server](#server)
+- [Application](#application)
+- [Passport setup](#passport-setup)
+- [Keys](#keys)
+- [Routes](#routes)
 
 ## Run project locally
  To get this project up and running locally please follow these steps:
@@ -39,7 +39,7 @@ Once you complete this guide you should be able to:
  2. Implement Criipto authentication flow in your Node application
  3. Choose between different authentication methods
 
-### 1. Register Your Application in Criipto Verify
+### Register Your Application in Criipto Verify
 Assuming that you already have an account created with Criipto Verify you have to register an application on the platform to use any of the available e-IDs for authentication.
 First create a new tenant by clicking on menu in top-right corner of the screen. Choose any preferred  name which is available. *Do not worry setting up tenant could take a while*
 ![](images/newtenant.jpg)
@@ -49,14 +49,14 @@ Fill in blank fields. Specify **Domain** on which you will communicating with Cr
 ![](images/createnewapplication.jpg)
 Choose desired authentication providers and click **Save**
 
-### 2. Configure the OAuth2 code flow
+### Configure the OAuth2 code flow
 Once you have saved the configuration for you application open it again and you should see **OpenID Connect** options.
 Select **Enable OAuth2 Code Flow**. Then you will be presented client secret, note it down because it is shown only once, also you can always generate new client secret by clicking **Re-generate client secret**
 For **User info response strategy** we will be using **plainJson**
 ![](images/openid.jpg)
 After everything is set up click **Save**
 
-### 3. Node.js application
+### Node.js application
 To create a Node.js application run `npm init` command.
 Then for successful implementation four dependencies are required:
 - express
@@ -66,7 +66,7 @@ Then for successful implementation four dependencies are required:
 
 To install these dependencies run `npm install express express-session passport passport-openidconnect --save`
 
-### 4. Server
+### Server
 Create `server.js` in root project directory with following code:
 ```javascript
 const app = require('./app') 
@@ -80,7 +80,7 @@ server.listen(port, () => {
 })
 ```
 
-### 5. Application
+### Application
 Create `app.js` file in root directory of the project. This file will contain most of the core application logic. 
 First you need to import libraries and other files that will be used in the application. Even though `passportSetup` is not used in this file it necessary to include it in order to invoke the passport setup code
 ```javascript
@@ -117,7 +117,7 @@ And lastly export the app object
 module.exports = app
 ```
 
-### 6. Passport setup
+### Passport setup
 For passport setup we create new folder `config` and in that folder file named `passport-setup.js`
 Required libraries:
 ```javascript
@@ -177,7 +177,7 @@ passport.deserializeUser((user, done)=> {
 })
 ```
 
-### 7. Keys
+### Keys
 We create another file under `config` folder called `keys.js`. This file will provide all required hardcoded strings for the application.
 ```javascript
 module.exports = {
@@ -192,7 +192,7 @@ module.exports = {
 }
 ```
 
-### 8. Routes
+### Routes
 Finally, we add `routes` folder in projects root directory and create `auth-routes.js` file. This file will handle all requests made to `http://localhost:5000/auth` route.
 Import necessary libraries:
 ```javascript
