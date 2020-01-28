@@ -1,5 +1,6 @@
 # Criipto authentication flow
 This project will guide you in setting up Criipto authentication flow using Node.js, Express and Passport libraries. If you want to try out multiple authentication methods with user interface please check out "demo_react_app" branch in this repository. This application could be also accessible through here: [https://criiptodemo.herokuapp.com/](https://criiptodemo.herokuapp.com/)  
+
 *To try out authentication flow thoroughly test users are necessary. How to get them you could check it out here:* [Create or Get e-ID Test Users](https://docs.criipto.com/how-to/test-users/)
 
 ## Table of Contents
