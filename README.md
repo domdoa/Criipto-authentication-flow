@@ -43,7 +43,7 @@ Once you complete this guide you should be able to:
 Assuming that you already have an account created with Criipto Verify you have to register an application on the platform to use any of the available e-IDs for authentication.  
 First create a new tenant by clicking on menu in top-right corner of the screen. Choose any preferred  name which is available. *Do not worry setting up tenant could take a while*  
 
-![](images/newtenant.jpg)  
+![](images/Newtenant.jpg)  
 Navigate to **Application** tab and create new application manually  
 
 ![](images/newapplication.jpg)  
